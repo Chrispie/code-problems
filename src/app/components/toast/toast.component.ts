@@ -2,7 +2,8 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} f
 import {Toast} from 'bootstrap';
 import {fromEvent, take} from 'rxjs';
 import {EventTypes} from "../../models/event-types";
-import { AsyncPipe, NgFor, NgIf, NgClass } from '@angular/common';
+import {NgClass} from '@angular/common';
+
 @Component({
   selector: 'app-toast',
   standalone: true,

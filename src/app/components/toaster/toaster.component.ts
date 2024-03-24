@@ -1,11 +1,13 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ToastEvent} from "../../models/toast-event";
 import {ToastService} from "../../services/toast.service";
+import {NgFor} from "@angular/common";
+import {ToastComponent} from "../toast/toast.component";
 
 @Component({
   selector: 'app-toaster',
   standalone: true,
-  imports: [],
+  imports: [NgFor,ToastComponent],
   templateUrl: './toaster.component.html',
   styleUrl: './toaster.component.scss'
 })
