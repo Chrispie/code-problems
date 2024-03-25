@@ -39,6 +39,13 @@ But for now I disabled SSR by following the steps on [this](https://www.reddit.c
 * Rm server.ts
 * Rm src/app/app.config.server.ts
 * Remove these keys from architect in angular.json
+```typescript
+        "server": "src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+            "entry": "server.ts"
+        }
+```
 * "server": "src/main.server.ts", "prerender": false, "ssr": { ... }
 * Remove these from tsconfig.app.json
   * files -> "src/main.server.ts"
