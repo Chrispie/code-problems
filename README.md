@@ -46,7 +46,6 @@ But for now I disabled SSR by following the steps on [this](https://www.reddit.c
             "entry": "server.ts"
         }
 ```
-* "server": "src/main.server.ts", "prerender": false, "ssr": { ... }
 * Remove these from tsconfig.app.json
   * files -> "src/main.server.ts"
   * types: [ "node" ] becomes "types": []
