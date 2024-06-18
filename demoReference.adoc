@@ -1,0 +1,3 @@
+= Reference adoc
+
+This should reference the demo.adoc xref:demo.adoc[]
