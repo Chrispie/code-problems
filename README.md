@@ -23,7 +23,18 @@ this will work with Ruby version 3.1.x.
 
 ```
 Caused by: org.jruby.exceptions.ArgumentError: (ArgumentError) wrong number of arguments (given 1, expected 0)
-	at RUBY.initialize(uri:classloader:/gems/asciidoctor-interdoc-reftext-0.5.4/lib/asciidoctor/interdoc_reftext/processor.rb:67)
+	at RUBY.initialize(uri:classloader:/gems/asciidoctor-interdoc-reftext-0.5.3/lib/asciidoctor/interdoc_reftext/processor.rb:66)
+	at org.jruby.RubyClass.new(org/jruby/RubyClass.java:922)
+	at RUBY.add_document_processor(uri:classloader:/gems/asciidoctor-2.0.23/lib/asciidoctor/extensions.rb:1387)
+	at RUBY.tree_processor(uri:classloader:/gems/asciidoctor-2.0.23/lib/asciidoctor/extensions.rb:844)
+	at RUBY.<main>(uri:classloader:/gems/asciidoctor-interdoc-reftext-0.5.3/lib/asciidoctor/interdoc_reftext.rb:10)
+	at org.jruby.RubyBasicObject.instance_exec(org/jruby/RubyBasicObject.java:2620)
+	at RUBY.activate(uri:classloader:/gems/asciidoctor-2.0.23/lib/asciidoctor/extensions.rb:744)
+	at org.jruby.RubyArray.each(org/jruby/RubyArray.java:1981)
+	at RUBY.activate(uri:classloader:/gems/asciidoctor-2.0.23/lib/asciidoctor/extensions.rb:739)
+	at RUBY.initialize(uri:classloader:/gems/asciidoctor-2.0.23/lib/asciidoctor/document.rb:498)
+	at org.jruby.RubyClass.new(org/jruby/RubyClass.java:935)
+	at RUBY.load(uri:classloader:/gems/asciidoctor-2.0.23/lib/asciidoctor/load.rb:84)
 ```
 
 I have no idea how to set the ruby version. I can see in the `processor.rb` that the error occurs on the `super`

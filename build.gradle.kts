@@ -8,16 +8,20 @@ plugins {
 }
 
 repositories {
-    gradlePluginPortal()
-    mavenCentral()
-    mavenLocal()
     ruby {
         gems()
+    }
+    gradlePluginPortal()
+}
+
+buildscript {
+    configurations.classpath {
+        resolutionStrategy.force("org.ysb33r.gradle:grolifant-core:3.0.1")
     }
 }
 
 dependencies {
-    asciidoctorGems("rubygems:asciidoctor-interdoc-reftext:0.5.2")
+    asciidoctorGems("rubygems:asciidoctor-interdoc-reftext:0.5.3")
 
     configurations.all {
         resolutionStrategy {
