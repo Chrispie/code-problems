@@ -1,6 +1,7 @@
 plugins {
     java
     id("io.quarkus")
+    id("io.freefair.lombok").version("8.6")
 }
 
 repositories {
@@ -15,13 +16,10 @@ val quarkusPlatformVersion: String by project
 dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
     implementation("io.quarkus:quarkus-hibernate-orm")
+    implementation("io.quarkus:quarkus-hibernate-orm-panache")
     implementation("io.quarkus:quarkus-jdbc-h2")
     implementation("io.quarkus:quarkus-arc")
     testImplementation("io.quarkus:quarkus-junit5")
-    // Added these 2 libs
-    implementation("io.quarkus:quarkus-vertx")
-    implementation("io.quarkus:quarkus-undertow")
-
 }
 
 group = "com.chrispie"

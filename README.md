@@ -1,22 +1,46 @@
 # What do I want to do
 
-I want to add add the H2 console to my Quarkus application
+I have 3 tables having a one-to-many relationship with one another:
 
-# What did I do
+![image](ERD.jpg)
 
-I looked at this [stack overflow article]https://stackoverflow.com/questions/61853691/how-to-set-h2-database-console-url-in-the-quarkus-application/64132441#64132441 on how to do it.
+I am creating the middle `InBetween` entity with the linked side entities. 
+When I am persisting the middle entity I want to insert all 3 at once.
 
-It states that there are 2 things that need to be done
+```java
+final Parent parentInstance = new Parent();
+final InBetween inBetweenInstance = new InBetween(parentInstance);      // Telling it about the parent
+final Child childInstance = new Child(inBetweenInstance);               // Telling it about the InBetween
+dbService.saveInBetween(inBetweenInstance);
+```
+So effectively I told each `Many-relationship` entity about its parent. But the parent `One-relationship` entity does not know about the children.
+I know with hibernate there is this bidirectional relations where the one entity knows about the other vice versa.
 
-* Add the `quarkus-vertx` and `quarkus-undertow` extensions which I did [build.gradle.kts](build.gradle.kts)
-* Create the deployment descriptor under src/main/resources/META-INF/web.xml [web.xml](src/main/resources/META-INF/web.xml) 
+The `dbService.saveInBetween` is using the `InBetween` entity class that extends `PanacheEntityBase` to persist it to the DB.
+```java
+@Transactional
+public void saveInBetween(InBetween inBetween) {
+    InBetween.persist(inBetween);
+}
+```
 
-During my gradle build I am getting the following error
+# What is the problem
 
-`Unsupported Java.
-Your build is currently configured to use Java 21.0.3 and Gradle 8.8.`
+Upon retrieval of the `InBetween` records, by calling the `InBetween.listAll()` method, I get the `Parent` entities back but not the `Child`ren. 
+If I look in the database nothing was inserted into the `child` table.
 
-I played around I am getting this exception as soon as I add the `quarkus-undertow` extensions.
+If I change the code to tell the `InBetween` instance to also know about the `Child`, thus so both know about one another it works:
 
-Do I have something wrong configured here or is there another way to achieve this?
+```java
+final Parent parentInstance = new Parent();
+final InBetween inBetweenInstance = new InBetween(parentInstance);
 
+// Both the Child and InBetween instances know about each other now
+final Child childInstance = new Child(inBetweenInstance);               
+inBetweenInstance.setChildren(List.of(childInstance));                  //Added this
+        
+dbService.saveInBetween(inBetweenInstance);
+```
+
+I did not tell the `Parent` about the `InBetween` instance but I do need to do the same for with the `child`.
+My question is why does it differ and what is the correct approach in doing it?
