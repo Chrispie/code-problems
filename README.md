@@ -44,3 +44,14 @@ dbService.saveInBetween(inBetweenInstance);
 
 I did not tell the `Parent` about the `InBetween` instance but I do need to do the same for with the `child`.
 My question is why does it differ and what is the correct approach in doing it?
+
+# Source code
+
+The 3 entity classes can be found here
+- [Parent entity](src/main/java/com/chrispie/entity/Parent.java)
+- [In Between entity](src/main/java/com/chrispie/entity/InBetween.java)
+- [Child entity](src/main/java/com/chrispie/entity/Child.java)
+
+And the service class [DBService](src/main/java/com/chrispie/service/DBService.java) only has a very simple method to persist and retrieve data.
+
+I also created a [Unit Test](src/test/java/com/chrispie/Tests.java) that tests this.
