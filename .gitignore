@@ -26,3 +26,8 @@ replay_pid*
 # Editor
 .idea
 .gradle
+
+
+.target
+target/
+**/target

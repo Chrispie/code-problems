@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- jaxb3 -->
+<jaxb:bindings version="3.0"
+              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+              xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+              xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+              jaxb:extensionBindingPrefixes="xjc" >
+
+
+    <jaxb:globalBindings generateElementProperty="false" typesafeEnumMemberName="generateName">
+        <xjc:javaType name="java.time.LocalDateTime" xmlType="xsd:dateTime" adapter="com.chrispie.MyLocalDateTimeAdapter" />
+        <xjc:typeSubstitution type="complex" />
+        <xjc:treatRestrictionLikeNewType />
+        <xjc:serializable />
+        <xjc:simple />
+    </jaxb:globalBindings>
+
+    <jaxb:bindings schemaLocation="MyXSD.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.chrispie.generated.xsd" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+
+</jaxb:bindings>

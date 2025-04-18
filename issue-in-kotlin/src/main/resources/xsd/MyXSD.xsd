@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://someService">
+  <xsd:element name="MyOwnTimeStamp" type="xsd:dateTime">
+    <xsd:annotation>
+      <xsd:documentation>I expect this field to use the java date time class</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+</xsd:schema>
